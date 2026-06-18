@@ -1,0 +1,8 @@
+.logo {
+    display: flex;
+}
+
+.action {
+    text-align: center;
+    flex: 1;
+}

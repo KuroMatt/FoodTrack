@@ -1,0 +1,23 @@
+
+<div>Liste des produits</div>
+@if(isLoading()){
+    <div>Loading...</div>
+}
+@else {
+@for (product of value();track product.id)
+    {
+        <mat-card onclick="">
+            <mat-card-header>
+                <mat-card-title>{{product.name}}</mat-card-title>
+                <img mat-card-avatar [src]="product.imageUrl" [alt]="product.name"/>
+            </mat-card-header>
+            <mat-card-content>
+                <p>{{product.category}}</p>
+            </mat-card-content>
+        </mat-card>
+        <p></p>
+    }
+}
+
+
+
