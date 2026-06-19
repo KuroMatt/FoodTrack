@@ -1,0 +1,13 @@
+@use './styles/themes/theme';
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Roboto, sans-serif;
+    background: var(--ft-background);
+    color: var(--ft-text);
+}
