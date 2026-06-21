@@ -2,7 +2,7 @@ import { inject, Injectable, InputSignal } from '@angular/core';
 import { HttpClient, httpResource } from '@angular/common/http';
 
 import { ProductDto } from '../models/product.model';
-import { environment } from '../../../environment/environment.development';
+import { environment } from '../../../../environment/environment.development';
 
 @Injectable({
   providedIn: 'root'

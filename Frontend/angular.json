@@ -5,7 +5,13 @@
   "projects": {
     "FoodTrackUX": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "skipTests": true,
+          "standalone": true
+  }},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
