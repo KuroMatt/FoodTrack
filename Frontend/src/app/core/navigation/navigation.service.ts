@@ -7,20 +7,26 @@ import { NavigationItem } from './navigation-item';
 export class NavigationService {
 
   readonly items: NavigationItem[] = [
-    {
-      label: 'Scanner',
-      icon: 'barcode_reader',
-      route: '/scan'
-    },
-    {
-      label: 'Produits',
-      icon: 'inventory_2',
-      route: '/products'
-    },
-    {
-      label: 'Stock',
-      icon: 'warehouse',
-      route: '/stock'
-    }
+  {
+    label: 'Dashboard',
+    icon: 'dashboard',
+    route: '/home'
+  },
+  {
+    label: 'Produits',
+    icon: 'inventory_2',
+    route: '/products'
+  },
+  {
+    label: 'Stocks',
+    icon: 'warehouse',
+    route: '/stocks'
+  },
+  {
+    label: 'Scanner',
+    icon: 'qr_code_scanner',
+    route: '/scanner'
+  }
+
   ];
 }

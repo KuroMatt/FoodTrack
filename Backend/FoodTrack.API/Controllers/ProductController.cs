@@ -15,7 +15,7 @@ namespace FoodTrack.API.Controllers
     /// séparation des responsabilités. Toutes les actions exposées sont accessibles via des routes HTTP et retournent
     /// des résultats adaptés aux conventions RESTful.</remarks>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/products")]
     public class ProductController : Controller
     {
         private readonly IMediator _mediator;
@@ -49,7 +49,7 @@ namespace FoodTrack.API.Controllers
         /// Récupère la liste de tous les produits
         /// </summary>
         /// <returns></returns>
-        [HttpGet("Products")]
+        [HttpGet]
         [ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
