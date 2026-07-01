@@ -1,5 +1,5 @@
-export interface ProductDto {
-  id: string;
+export interface ProductModel {
+  productId: string;
   name: string;
   barCode: string;
   brand: string;

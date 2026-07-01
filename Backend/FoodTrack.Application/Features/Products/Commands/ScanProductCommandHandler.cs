@@ -23,7 +23,7 @@ namespace FoodTrack.Application.Features.Products.Commands
         }
         public async Task<ProductDto> Handle(ScanProductCommand request, CancellationToken cancellationToken)
         {
-            var productEntity = await _productRepository.GetByBarCodeAsync(request.Barcode);
+            var productEntity = await _productRepository.GetByBarCodeAsync(request.Barcode,cancellationToken);
             if (productEntity is not null)
             {
                 return ProductMapper.ToDto(productEntity);
@@ -36,7 +36,7 @@ namespace FoodTrack.Application.Features.Products.Commands
             }
             var product = Product.Create(externalProduct.Name, externalProduct.Brand, externalProduct.BarCode, externalProduct.Category, externalProduct.Weight, externalProduct.ImageUrl);
 
-            await _productRepository.AddAsync(product);
+            await _productRepository.AddAsync(product,cancellationToken);
             return ProductMapper.ToDto(product);
 
         }

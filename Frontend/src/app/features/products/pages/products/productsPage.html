@@ -1,0 +1,47 @@
+<section class="page-header">
+
+    <div class="title">
+
+        <h1>Produits</h1>
+
+        <p>
+            Gérez les produits de votre inventaire.
+        </p>
+
+    </div>
+
+    <div class="actions">
+
+        <button mat-stroked-button>
+
+            <mat-icon>qr_code_scanner</mat-icon>
+
+            Scanner
+
+        </button>
+
+        <button mat-flat-button color="primary">
+
+            <mat-icon>add</mat-icon>
+
+            Ajouter
+
+        </button>
+
+    </div>
+
+</section>
+
+<mat-form-field appearance="outline">
+
+    <mat-label>Rechercher un produit</mat-label>
+
+    <input
+        matInput
+        placeholder="Nom ou code-barres">
+
+    <mat-icon matSuffix>search</mat-icon>
+
+</mat-form-field>
+
+<app-product-list />

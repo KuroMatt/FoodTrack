@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-loading',
   imports: [],
-  templateUrl: './products.html',
-  styleUrl: './products.scss',
+  templateUrl: './loading.html',
+  styleUrl: './loading.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsComponent {
+export class LoadingComponent {
 
 }

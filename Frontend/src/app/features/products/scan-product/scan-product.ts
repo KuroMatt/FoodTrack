@@ -1,6 +1,6 @@
 import { Component, inject, input } from '@angular/core';
 import { ProductService } from '../services/product-services';
-import { ProductDto } from '../models/product.model';
+import { ProductModel } from '../models/product.model';
 
 @Component({
   selector: 'app-scan-product',

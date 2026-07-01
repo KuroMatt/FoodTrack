@@ -1,0 +1,74 @@
+<button
+    mat-button
+    routerLink="/products">
+
+    <mat-icon>arrow_back</mat-icon>
+
+    Retour
+
+</button>
+
+<h1>Détail du produit</h1>
+
+@if (product.isLoading()) {
+
+    <app-loading />
+
+}
+@else if (product.error()) {
+
+    <app-error-state />
+
+}
+@else {
+
+    <div class="product-details">
+
+        <img
+            [src]="product.value()?.imageUrl"
+            alt="{{ product.value()?.name }}"
+        />
+
+        <div class="product-info">
+
+    <h1>{{ product.value()?.name }}</h1>
+
+<p>
+    {{ product.value()?.barCode }}
+</p>
+
+<p>
+    {{ product.value()?.brand }}
+</p>
+
+<p>
+    {{ product.value()?.category }}
+</p>
+        </div>
+    </div>
+
+}
+
+<mat-card>
+
+    <mat-card-header>
+
+        <mat-card-title>
+
+            Stock disponible
+
+        </mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <p>
+
+            Chargement du stock...
+
+        </p>
+
+    </mat-card-content>
+
+</mat-card>

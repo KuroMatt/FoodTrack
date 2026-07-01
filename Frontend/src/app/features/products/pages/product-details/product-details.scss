@@ -1,0 +1,28 @@
+.product-details {
+
+    display: flex;
+    gap: 40px;
+    margin-top: 32px;
+    align-items: flex-start;
+
+}
+
+img {
+
+    width: 260px;
+
+    border-radius: 12px;
+
+}
+
+.information {
+
+    flex: 1;
+
+}
+
+.information h1 {
+
+    margin-top: 0;
+
+}

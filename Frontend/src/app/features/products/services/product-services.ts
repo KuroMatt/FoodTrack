@@ -1,7 +1,7 @@
-import { inject, Injectable, InputSignal } from '@angular/core';
-import { HttpClient, httpResource } from '@angular/common/http';
+import { Injectable, InputSignal } from '@angular/core';
+import { httpResource } from '@angular/common/http';
 
-import { ProductDto } from '../models/product.model';
+import { ProductModel } from '../models/product.model';
 import { environment } from '../../../../environment/environment.development';
 
 @Injectable({
@@ -9,13 +9,18 @@ import { environment } from '../../../../environment/environment.development';
 })
 export class ProductService {
 
-  private readonly apiUrl : string = `${environment.apiBaseUrl}/product`;
+  private readonly apiUrl : string = `${environment.apiBaseUrl}/api/products`;
+  readonly products = httpResource<ProductModel[]>(() => this.apiUrl);
 
   getByBarcode(barcode: InputSignal<string | undefined>)  {
-    return httpResource<ProductDto>(() => `${this.apiUrl}/${barcode}`);
+    return httpResource<ProductModel>(() => `${this.apiUrl}/${barcode}`);
   }
 
-  getAllProducts() {
-    return httpResource<ProductDto[]>(() => `${this.apiUrl}/Products` );
-  }
+  getById(id: string) {
+    return httpResource<ProductModel>(() =>
+        `${this.apiUrl}/${id}`
+    );
+
+}
+
 }

@@ -14,10 +14,10 @@ namespace FoodTrack.Infrastructure.Repositories
             _productTrackDbContext = productTrackDbContext;
         }
 
-        public async Task AddAsync(Product product)
+        public async Task AddAsync(Product product,CancellationToken cancellationToken)
         {
-           await _productTrackDbContext.AddAsync(product);
-           await _productTrackDbContext.SaveChangesAsync();
+           await _productTrackDbContext.AddAsync(product, cancellationToken);
+           await _productTrackDbContext.SaveChangesAsync(cancellationToken);
         }
 
         public async Task<IReadOnlyList<Product>> GetAllAsync(CancellationToken cancellationToken)
@@ -25,11 +25,15 @@ namespace FoodTrack.Infrastructure.Repositories
             return await _productTrackDbContext.Products.ToListAsync(cancellationToken);
         }
 
-        public async Task<Product?> GetByBarCodeAsync(string barCode)
+        public async Task<Product?> GetByBarCodeAsync(string barCode, CancellationToken cancellationToken)
         {
-            return await _productTrackDbContext.Products.FirstOrDefaultAsync(product => product.BarCode == barCode);
+            return await _productTrackDbContext.Products.FirstOrDefaultAsync(product => product.BarCode == barCode, cancellationToken);
         }
 
+        public async Task<Product?> GetByProductIdAsync(Guid productId, CancellationToken cancellationToken)
+        {
+            return await _productTrackDbContext.Products.FirstOrDefaultAsync(product => product.ProductId == productId, cancellationToken);
+        }
 
         public async Task<IReadOnlyList<Product>> GetByIdsAsync(List<Guid> productIds, CancellationToken cancellationToken)
         {

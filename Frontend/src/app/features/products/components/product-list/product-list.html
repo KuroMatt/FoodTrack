@@ -1,0 +1,25 @@
+
+<div>Liste des produits</div>
+@if(isLoading()){
+    <div>Loading...</div>
+}
+@else if (isError()) {
+    <div>Erreur lors du chargement des produits.</div>
+}
+@else if (value()?.length === 0) {
+
+    <app-empty-state title="Aucun produit trouvé" message="Il n'y a aucun produit à afficher."></app-empty-state>
+
+}
+@else {
+@for (product of value();track product)
+    {
+        <app-product 
+            [product]="product"
+            (selected)="openProduct($event)"
+        />
+    }
+}
+
+
+

@@ -4,6 +4,7 @@ using FoodTrack.Application.Features.Products.Queries;
 using FoodTrack.Application.Features.StockProducts.Query;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using static FoodTrack.Application.Features.Products.Queries.GetByProductByIdQueryHandler;
 
 namespace FoodTrack.API.Controllers
 {
@@ -36,7 +37,7 @@ namespace FoodTrack.API.Controllers
         /// <returns></returns>
         [HttpGet("{barCode}")]
         [ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetProduct(string barCode)
+        public async Task<IActionResult> GetProductByBarCode(string barCode)
         {
             var productDto = await _mediator.Send(new ScanProductCommand(barCode));
             var totalStockQuantity = await _mediator.Send(new GetTotalStockByProductQuery(productDto.ProductId));
@@ -56,6 +57,19 @@ namespace FoodTrack.API.Controllers
             var products = await _mediator.Send(new GetAllProductsQuery());
 
             return Ok(products);
+        }
+
+        /// <summary>
+        /// Récupère les informations d'un produit à partir de son code-barres et le stocke dans la base de données.
+        /// </summary>
+        /// <param name="id">ID du produit</param>
+        /// <returns></returns>
+        [HttpGet("{id:guid}")]
+        [ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetProductById(Guid id)
+        {
+            var productDto = await _mediator.Send(new GetByProductByIdQuery(id));
+            return Ok(productDto);
         }
     }
 }
